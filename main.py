@@ -27,7 +27,7 @@ def parse(source_code):
 		source_code = source_code.replace(key, replacer[key])
 	return source_code
 
-handle='i_am_kind_of_lucky'
+handle='-Emilchess-'
 
 if not os.path.exists(handle):
 	os.makedirs(handle)
