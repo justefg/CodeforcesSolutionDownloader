@@ -60,7 +60,7 @@ for submission in submissions:
             os.makedirs(new_directory)
         file = open(new_directory + '/' + prob_id + '[ ' + prob_name + ' ]' + '.' + ext, 'w')
         file.write(result)
-    file.close()
+        file.close()
 end_time = time.time()
 
 print 'Execution time %d seconds' % int(end_time - start_time)
