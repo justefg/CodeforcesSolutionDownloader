@@ -27,7 +27,7 @@ def get_ext(comp_lang):
 def parse(source_code):
     for key in keys:
         source_code = source_code.replace(key, replacer[key])
-        return source_code
+    return source_code
 
 handle='tacklemore'
 
