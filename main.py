@@ -29,7 +29,7 @@ def parse(source_code):
         source_code = source_code.replace(key, replacer[key])
     return source_code
 
-handle='tacklemore'
+handle='i_am_kind_of_lucky'
 
 if not os.path.exists(handle):
     os.makedirs(handle)
@@ -52,15 +52,15 @@ for submission in submissions:
         
         start_pos = submission_info.find(SOURCE_CODE_BEGIN, MAGIC_START_POINT) + len(SOURCE_CODE_BEGIN)
         end_pos = submission_info.find("</pre>", start_pos)
-        result = parse(submission_info[start_pos:end_pos])
+        result = parse(submission_info[start_pos:end_pos]).replace('\r', '')
         ext = get_ext(comp_lang)
         
         new_directory = handle + '/' + str(con_id)
         if not os.path.exists(new_directory):
             os.makedirs(new_directory)
         file = open(new_directory + '/' + prob_id + '[ ' + prob_name + ' ]' + '.' + ext, 'w')
-        file.write(result)
-        file.close()
+	file.write(result)
+	file.close()		
 end_time = time.time()
 
 print 'Execution time %d seconds' % int(end_time - start_time)
