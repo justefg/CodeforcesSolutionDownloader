@@ -44,20 +44,22 @@ start_time = time.time()
 
 for submission in submissions:
     if submission['verdict'] == u'OK' and submission['contestId'] < MAX_CF_CONTEST_ID:
-        con_id, sub_id, prob_name, prob_id, comp_lang = submission['contestId'], submission['id'], submission['problem']['name'], submission['problem']['index'], submission['programmingLanguage']
-            submission_info = urllib.urlopen(SUBMISSION_URL.format(ContestId=con_id, SubmissionId=sub_id)).read()
-                
-                start_pos = submission_info.find(SOURCE_CODE_BEGIN, MAGIC_START_POINT) + len(SOURCE_CODE_BEGIN)
-                end_pos = submission_info.find("</pre>", start_pos)
-                result = parse(submission_info[start_pos:end_pos])
-                ext = get_ext(comp_lang)
-                
-                new_directory = handle + '/' + str(con_id)
-                if not os.path.exists(new_directory):
-                    os.makedirs(new_directory)
-                file = open(new_directory + '/' + prob_id + '[ ' + prob_name + ' ]' + '.' + ext, 'w')
-                file.write(result)
-            file.close()
+        con_id, sub_id = submission['contestId'], submission['id'],
+        prob_name, prob_id = submission['problem']['name'], submission['problem']['index']
+        comp_lang = submission['programmingLanguage']
+        submission_info = urllib.urlopen(SUBMISSION_URL.format(ContestId=con_id, SubmissionId=sub_id)).read()
+        
+        start_pos = submission_info.find(SOURCE_CODE_BEGIN, MAGIC_START_POINT) + len(SOURCE_CODE_BEGIN)
+        end_pos = submission_info.find("</pre>", start_pos)
+        result = parse(submission_info[start_pos:end_pos])
+        ext = get_ext(comp_lang)
+        
+        new_directory = handle + '/' + str(con_id)
+        if not os.path.exists(new_directory):
+            os.makedirs(new_directory)
+        file = open(new_directory + '/' + prob_id + '[ ' + prob_name + ' ]' + '.' + ext, 'w')
+        file.write(result)
+    file.close()
 end_time = time.time()
 
 print 'Execution time %d seconds' % int(end_time - start_time)
