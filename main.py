@@ -38,7 +38,8 @@ user_info = urllib.urlopen(USER_INFO_URL.format(handle=handle, count=MAX_SUBS)).
 dic = json.loads(user_info)
 if dic['status'] != u'OK':
     print 'Oops.. Something went wrong...'
-        exit(0)
+    exit(0)
+
 submissions = dic['result']
 start_time = time.time()
 
