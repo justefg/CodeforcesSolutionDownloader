@@ -19,10 +19,10 @@ keys = replacer.keys()
 def get_ext(comp_lang):
     if 'C++' in comp_lang:
         return 'cpp'
-        for key in EXT_keys:
-            if key in comp_lang:
-                return EXT[key]
-        return ""
+    for key in EXT_keys:
+        if key in comp_lang:
+            return EXT[key]
+    return ""
 
 def parse(source_code):
     for key in keys:
