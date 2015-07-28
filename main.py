@@ -6,7 +6,9 @@ MAX_SUBS = 1000000
 MAX_CF_CONTEST_ID = 600
 MAGIC_START_POINT = 17000
 
-SOURCE_CODE_BEGIN = '<pre class="prettyprint" style="padding:0.5em;">'
+handle='tacklemore'
+
+SOURCE_CODE_BEGIN = '<pre class="prettyprint program-source" style="padding: 0.5em;">'
 SUBMISSION_URL = 'http://codeforces.com/contest/{ContestId}/submission/{SubmissionId}'
 USER_INFO_URL = 'http://codeforces.com/api/user.status?handle={handle}&from=1&count={count}'
 
@@ -28,8 +30,6 @@ def parse(source_code):
     for key in keys:
         source_code = source_code.replace(key, replacer[key])
     return source_code
-
-handle='tacklemore'
 
 if not os.path.exists(handle):
     os.makedirs(handle)
